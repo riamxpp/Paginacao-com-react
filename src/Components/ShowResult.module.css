@@ -1,0 +1,31 @@
+.showResult {
+  width: 60rem;
+  height: auto;
+  padding: 0.5rem;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.title {
+  height: 2.4rem;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.showResult div {
+  width: 12rem;
+  height: 19.5rem;
+}
+
+.img {
+  width: 100%;
+}
+
+.img img {
+  width: 100%;
+}
