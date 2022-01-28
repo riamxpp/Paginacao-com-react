@@ -4,4 +4,14 @@
   justify-content: center;
   align-items: center;
   width: 98vw;
+  height: 100vh;
+}
+.loading {
+  width: 100vw;
+  height: 100vh;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
 }

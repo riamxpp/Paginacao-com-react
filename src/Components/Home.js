@@ -8,16 +8,15 @@ import qs from "qs";
 
 const url = "https://kitsu.io/api/edge/anime?";
 const api = "https://kitsu.io/api/edge/";
-const LIMIT = 12;
+const LIMIT = 10;
 
 const Home = () => {
   const [date, setDate] = useState({});
   const [value, setValue] = useState("");
   const [offset, setOffset] = useState(0);
+  const [resetOffset, setResetOffset] = useState(false);
 
   const { error, loading, request } = useFetch(url);
-
-  console.log(date);
 
   useEffect(() => {
     setDate({});
@@ -30,9 +29,18 @@ const Home = () => {
     };
 
     if (value) {
+      if (!resetOffset) {
+        setResetOffset(true);
+        setOffset(0);
+      }
       query.filter = {
         text: value,
       };
+    } else if (resetOffset) {
+      if (value.length === 0) {
+        setResetOffset(false);
+        setOffset(0);
+      }
     }
 
     async function takeDate() {
@@ -41,19 +49,25 @@ const Home = () => {
       return;
     }
     takeDate();
-  }, [value, request, offset]);
+  }, [value, request, offset, resetOffset]);
+
+  console.log(date);
 
   if (error) return <div>Ocorreu um erro!!!</div>;
   if (!date) return null;
   return (
     <div className={style.home}>
       <SearchInput value={value} setValue={setValue} />
-      {loading && <div>Carregando</div>}
+      {loading && (
+        <div className={style.loading}>
+          <p>Carregando...</p>
+        </div>
+      )}
       {date.data && <ShowResult animes={date.data} />}
       {date.data && (
         <Paginition
           limit={LIMIT}
-          total={date.data.count}
+          total={date.meta.count}
           offset={offset}
           setOffset={setOffset}
         />
