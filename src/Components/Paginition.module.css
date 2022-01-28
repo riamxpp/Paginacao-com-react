@@ -1,0 +1,24 @@
+.paginacao {
+  list-style: none;
+  display: flex;
+  margin: 1rem 0;
+}
+
+.paginacao li {
+  margin-left: 0.5rem;
+}
+
+.paginacao li button {
+  padding: 0.2rem 0.5rem;
+  cursor: pointer;
+}
+
+.actualPage {
+  border: none;
+  font-weight: bold;
+  background: none;
+}
+
+.actualPage:focus {
+  outline: none;
+}

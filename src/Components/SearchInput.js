@@ -12,8 +12,6 @@ const SearchInput = ({ value, setValue }) => {
     debounceChange(target.value);
   }
 
-  console.log(value);
-
   return (
     <input
       type="search"
